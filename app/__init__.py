@@ -1,12 +1,8 @@
-'''
-#2. 使用工厂函数: 用于初始化和动态地修改配置
-'''
-
-from flask import Flask, render_template
+from flask import Flask
 from flask_bootstrap import Bootstrap
 from flask_mail import Mail
-from flask_moment import Moment
-from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import  SQLAlchemy
+from flask_moment import  Moment
 from config import config
 
 bootstrap = Bootstrap()
@@ -24,8 +20,6 @@ def create_app(config_name):
     moment.init_app(app)
     db.init_app(app)
 
-    # 附加路由和自定义错误页面
-    #3. 蓝本在工厂函数中，注册到程序
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
 
